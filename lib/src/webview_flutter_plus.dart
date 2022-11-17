@@ -877,11 +877,11 @@ class _Server {
       HttpServer.bind('localhost', 0, shared: true).then((server) {
         _server = server;
         server.listen((HttpRequest httpRequest) async {
-          debugPrint("test Webview Package ");
           List<int> body = [];
           String path = httpRequest.requestedUri.path;
           path = (path.startsWith('/')) ? path.substring(1) : path;
           path += (path.endsWith('/')) ? 'index.html' : '';
+          debugPrint("package " + path);
           try {
             body = (await rootBundle.load(path)).buffer.asUint8List();
           } catch (e) {
