@@ -881,7 +881,7 @@ class _Server {
           String path = httpRequest.requestedUri.path;
           path = (path.startsWith('/')) ? path.substring(1) : path;
           path += (path.endsWith('/')) ? 'index.html' : '';
-          debugPrint("package " + path);
+          print("package " + path);
           try {
             body = (await rootBundle.load(path)).buffer.asUint8List();
           } catch (e) {
