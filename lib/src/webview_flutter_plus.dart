@@ -903,16 +903,12 @@ class _Server {
               httpRequest.requestedUri.pathSegments.isNotEmpty) {
             String? mimeType = lookupMimeType(httpRequest.requestedUri.path,
                 headerBytes: body);
-
             if (mimeType != null) {
               contentType = mimeType.split('/');
             }
           }
-          if (contentType.indexOf("oebps-package+xml") > -1) {
-            contentType[1] = "xml";
-          }
-          httpRequest.response.headers.contentType =
-              ContentType(contentType[0], contentType[1], charset: 'utf-8');
+          // httpRequest.response.headers.contentType =
+          //     ContentType(contentType[0], contentType[1], charset: 'utf-8');
           httpRequest.response.add(body);
           httpRequest.response.close();
         });
