@@ -887,14 +887,11 @@ class _Server {
           debugPrint("package " + path);
           try {
             if (path.indexOf('webpackage') > -1) {
-              debugPrint("asset");
               body = (await rootBundle.load(path)).buffer.asUint8List();
             } else {
-              debugPrint("book");
               path = "$dir/TTenabledbook/$path";
               File file = await File(path).create();
               body = await file.readAsBytes();
-              // debugPrint(file.toString());
             }
           } catch (e) {
             print('Error: $e');
@@ -906,9 +903,13 @@ class _Server {
               httpRequest.requestedUri.pathSegments.isNotEmpty) {
             String? mimeType = lookupMimeType(httpRequest.requestedUri.path,
                 headerBytes: body);
+
             if (mimeType != null) {
               contentType = mimeType.split('/');
             }
+          }
+          if (contentType.indexOf("oebps-package+xml") > -1) {
+            contentType[1] = "octet-stream";
           }
           httpRequest.response.headers.contentType =
               ContentType(contentType[0], contentType[1], charset: 'utf-8');
