@@ -907,8 +907,8 @@ class _Server {
               contentType = mimeType.split('/');
             }
           }
-          // httpRequest.response.headers.contentType =
-          //     ContentType(contentType[0], contentType[1], charset: 'utf-8');
+          httpRequest.response.headers.contentType =
+              ContentType(contentType[0], contentType[1], charset: 'utf-8');
           httpRequest.response.add(body);
           httpRequest.response.close();
         });
