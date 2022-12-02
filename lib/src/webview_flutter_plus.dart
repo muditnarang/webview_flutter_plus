@@ -892,6 +892,8 @@ class _Server {
             } else {
               debugPrint("book");
               path = "$dir/TTenabledbook/$path";
+              File file = File(path);
+              debugPrint(file.toString());
             }
           } catch (e) {
             print('Error: $e');
