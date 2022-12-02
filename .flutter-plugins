@@ -1,4 +1,10 @@
 # This is a generated file; do not edit or check into version control.
+path_provider=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.11/
+path_provider_android=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.22/
+path_provider_ios=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.11/
+path_provider_linux=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/
+path_provider_macos=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/
+path_provider_windows=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/
 webview_flutter=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.0/
 webview_flutter_android=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.8.3/
 webview_flutter_wkwebview=/Users/excel/tools/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.7.1/

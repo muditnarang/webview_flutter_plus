@@ -5,6 +5,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:flutter/services.dart';
 import 'package:mime/mime.dart';
@@ -877,13 +878,21 @@ class _Server {
       HttpServer.bind('localhost', 0, shared: true).then((server) {
         _server = server;
         server.listen((HttpRequest httpRequest) async {
+          var dir = (await getApplicationDocumentsDirectory()).path;
+          debugPrint("dir- $dir");
           List<int> body = [];
           String path = httpRequest.requestedUri.path;
           path = (path.startsWith('/')) ? path.substring(1) : path;
           path += (path.endsWith('/')) ? 'index.html' : '';
-          print("package " + path);
+          debugPrint("package " + path);
           try {
-            body = (await rootBundle.load(path)).buffer.asUint8List();
+            if (path.indexOf('webpackage') > -1) {
+              debugPrint("asset");
+              body = (await rootBundle.load(path)).buffer.asUint8List();
+            } else {
+              debugPrint("book");
+              path = "$dir/TTenabledbook/$path";
+            }
           } catch (e) {
             print('Error: $e');
             httpRequest.response.close();
