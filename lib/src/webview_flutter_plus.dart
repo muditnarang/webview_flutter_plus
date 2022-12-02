@@ -897,11 +897,12 @@ class _Server {
               contentType = mimeType.split('/');
             }
           }
-          if (contentType[1] == "oebps-package+xml") {
-            contentType[1] = "text";
+          if (contentType[1] != "oebps-package+xml") {
+            // contentType[1] = "text";
+            httpRequest.response.headers.contentType =
+                ContentType(contentType[0], contentType[1], charset: 'utf-8');
+            debugPrint("contentType skipped");
           }
-          httpRequest.response.headers.contentType =
-              ContentType(contentType[0], contentType[1], charset: 'utf-8');
           debugPrint(contentType[0] + "--" + contentType[1]);
           httpRequest.response.add(body);
           httpRequest.response.close();
