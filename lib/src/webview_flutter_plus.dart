@@ -888,21 +888,43 @@ class _Server {
             httpRequest.response.close();
             return;
           }
-          var contentType = ['text', 'html'];
-          if (!httpRequest.requestedUri.path.endsWith('/') &&
-              httpRequest.requestedUri.pathSegments.isNotEmpty) {
-            String? mimeType = lookupMimeType(httpRequest.requestedUri.path,
-                headerBytes: body);
-            if (mimeType != null) {
-              contentType = mimeType.split('/');
-            }
+          var tpath = httpRequest.requestedUri.path;
+          var contentType, //= ['text', 'html'],
+              mimeType;
+          if (path.endsWith("xhtml")) {
+            mimeType = "application/xhtml+xml";
+          } else if (tpath.endsWith("html") || tpath.endsWith("htm")) {
+            mimeType = "text/html";
+          } else if (tpath.endsWith("svg")) {
+            mimeType = "image/svg+xml";
+          } else if (tpath.endsWith("mp3")) {
+            mimeType = "audio/mp3";
+          } else if (tpath.endsWith("mp4")) {
+            mimeType = "video/mp4";
+          } else if (tpath.endsWith("css")) {
+            mimeType = "text/css";
+          } else if (tpath.endsWith("js")) {
+            mimeType = "text/javascript";
+          } else if (tpath.endsWith("json")) {
+            mimeType = "application/json";
           }
-          if (contentType[1] != "oebps-package+xml") {
-            // contentType[1] = "text";
+
+          // if (!httpRequest.requestedUri.path.endsWith('/') &&
+          //     httpRequest.requestedUri.pathSegments.isNotEmpty) {
+          //   String? mimeType = lookupMimeType(httpRequest.requestedUri.path,
+          //       headerBytes: body);
+          if (mimeType != null) {
+            contentType = mimeType.split('/');
+          }
+          // }
+          // if (contentType[1] != "oebps-package+xml") {
+          // contentType[1] = "text";
+          if (contentType.length) {
             httpRequest.response.headers.contentType =
                 ContentType(contentType[0], contentType[1], charset: 'utf-8');
-            debugPrint("contentType skipped");
           }
+          debugPrint("contentType skipped");
+          // }
           debugPrint(contentType[0] + "--" + contentType[1]);
           httpRequest.response.add(body);
           httpRequest.response.close();
