@@ -886,13 +886,13 @@ class _Server {
           path += (path.endsWith('/')) ? 'index.html' : '';
           debugPrint("package " + path);
           try {
-            if (path.indexOf('webpackage') > -1) {
-              body = (await rootBundle.load(path)).buffer.asUint8List();
-            } else {
-              path = "$dir/TTenabledbook/$path";
-              File file = await File(path).create();
-              body = await file.readAsBytes();
-            }
+            // if (path.indexOf('webpackage') > -1) {
+            body = (await rootBundle.load(path)).buffer.asUint8List();
+            // } else {
+            //   path = "$dir/TTenabledbook/$path";
+            //   File file = await File(path).create();
+            //   body = await file.readAsBytes();
+            // }
           } catch (e) {
             print('Error: $e');
             httpRequest.response.close();
