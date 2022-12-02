@@ -892,8 +892,9 @@ class _Server {
             } else {
               debugPrint("book");
               path = "$dir/TTenabledbook/$path";
-              File file = File(path);
-              debugPrint(file.toString());
+              File file = await File(path).create();
+              body = await file.readAsBytes();
+              // debugPrint(file.toString());
             }
           } catch (e) {
             print('Error: $e');
