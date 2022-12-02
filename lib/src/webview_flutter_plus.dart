@@ -909,7 +909,7 @@ class _Server {
             }
           }
           if (contentType.indexOf("oebps-package+xml") > -1) {
-            contentType[1] = "octet-stream";
+            contentType[1] = "xml";
           }
           httpRequest.response.headers.contentType =
               ContentType(contentType[0], contentType[1], charset: 'utf-8');
