@@ -915,11 +915,11 @@ class _Server {
           //       headerBytes: body);
           if (mimeType != null) {
             contentType = mimeType.split('/');
-          }
-          // }
-          // if (contentType[1] != "oebps-package+xml") {
-          // contentType[1] = "text";
-          if (mimeType != null && contentType.length > 0) {
+
+            // }
+            // if (contentType[1] != "oebps-package+xml") {
+            // contentType[1] = "text";
+            // if (mimeType != null && contentType.length > 0) {
             httpRequest.response.headers.contentType =
                 ContentType(contentType[0], contentType[1], charset: 'utf-8');
           }
