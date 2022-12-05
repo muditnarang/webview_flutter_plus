@@ -919,7 +919,7 @@ class _Server {
           // }
           // if (contentType[1] != "oebps-package+xml") {
           // contentType[1] = "text";
-          if (contentType.length > 0) {
+          if (mimeType != null && contentType.length > 0) {
             httpRequest.response.headers.contentType =
                 ContentType(contentType[0], contentType[1], charset: 'utf-8');
           }
