@@ -922,10 +922,11 @@ class _Server {
             // if (mimeType != null && contentType.length > 0) {
             httpRequest.response.headers.contentType =
                 ContentType(contentType[0], contentType[1], charset: 'utf-8');
+            debugPrint(contentType[0] + "--" + contentType[1]);
           }
           debugPrint("contentType skipped");
           // }
-          debugPrint(contentType[0] + "--" + contentType[1]);
+
           httpRequest.response.add(body);
           httpRequest.response.close();
         });
